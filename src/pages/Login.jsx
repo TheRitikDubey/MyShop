@@ -15,13 +15,14 @@ function Login() {
     })
   }
   useEffect(() => {
+    console.log(user);
       setUser(localStorage.getItem("email"));
-  }, [user]);
+  },[]);
   
   return (
     <>
     {
-      user === ''?
+      user === '' || user === null?
       <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 h-screen">
       <div className="flex justify-between w-[80%] h-[70%] rounded-3xl bg-slate-50">
         <div className="p-16 w-[100%]">
