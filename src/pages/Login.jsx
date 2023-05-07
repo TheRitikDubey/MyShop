@@ -17,7 +17,7 @@ function Login() {
   useEffect(() => {
     console.log(user);
       setUser(localStorage.getItem("email"));
-  },[]);
+  });
   
   return (
     <>
