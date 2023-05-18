@@ -13,21 +13,21 @@ const CartItem = ({item, itemIndex}) => {
   }
 
   return (
-    <div className="bg-red">
+    <div className="p-8">
 
-      <div>
+      <div className="border-black rounded-md">
 
         <div>
-          <img src={item.image} />
+          <img src={item.image} width="100" height="100" />
         </div>
-        <div>
+        <div className="mt-4 flex flex-col gap-4">
           <h1>{item.title}</h1>
           <h1>{item.description}</h1>
           <div>
             <p>{item.price}</p>
             <div
             onClick={removeFromCart}>
-              <FcDeleteDatabase/>
+              <button className="bg-red-500 p-2 border rounded-lg">Remove</button>
             </div>
           </div>
 

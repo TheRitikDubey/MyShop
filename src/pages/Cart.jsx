@@ -35,7 +35,7 @@ const Cart = () => {
       <div>
 
         <div>
-          <div className="bg-red">Your Cart</div>
+          <div className="bg-red-500">Your Cart</div>
           <div>Summary</div>
           <p>
             <span>Total Items: {cart.length}</span>
