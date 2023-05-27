@@ -26,7 +26,7 @@ function Login() {
     {
       user === '' || user === null?
       <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 h-screen">
-      <div className="flex justify-between w-[80%] h-[70%] rounded-3xl bg-slate-50">
+      <div className="flex justify-between w-[80%] h-[80%] rounded-3xl bg-slate-50">
         <div className="p-16 w-[100%]">
           <div className="flex flex-col gap-4">
             <h2 className="text-pink-400 text-md font-semibold">
@@ -55,7 +55,7 @@ function Login() {
                 Login
               </button>
             </div>
-            <Link className="border rounded-md bg-pink-500 w-[25%]" to="/signup">Create you account</Link>
+            <Link className="border rounded-md bg-pink-500 w-[30%] p-2 text-xs" to="/signup">Create you account</Link>
             <p className="text-slate-300 ">or continue with</p>
             {/* Login with google section */}
             <div className="flex gap-8">
