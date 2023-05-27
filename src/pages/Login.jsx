@@ -31,8 +31,8 @@ function Login() {
     {
       user === '' || user === null?
       <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 h-screen">
-      <div className="flex justify-between w-[80%] h-[80%] rounded-3xl bg-slate-50">
-        <div className="p-16 w-[100%]">
+      <div className="p-8 flex justify-between w-[80%] h-[85%] rounded-3xl bg-slate-50">
+        <div className="w-[100%]">
           <div className="flex flex-col gap-4">
             <h2 className="text-pink-400 text-md font-semibold">
               Welcome back !!!
@@ -55,12 +55,15 @@ function Login() {
             <div className="mt-2">
               <button
                 type="submit"
-                className="bg-pink-400 p-2 rounded-lg w-[18%]"
+                className="bg-pink-400 p-2 rounded-lg"
               >
                 Login
               </button>
             </div>
-            <Link className="border rounded-md bg-pink-500 w-[30%] p-2 text-xs" to="/signup">Create you account</Link>
+            <div className="w-[40%">
+            <Link className="border rounded-md bg-pink-500 p-2 text-xs" to="/signup">Create you account</Link>
+            </div>
+            
             <p className="text-slate-300 ">or continue with</p>
             {/* Login with google section */}
             <div className="flex gap-8">
@@ -73,7 +76,7 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="bg-sky-300 w-[35%] rounded-3xl">
+        <div className="bg-sky-300 w-[35%] rounded-3xl hidden md:block lg:block">
           <div className="mt-16">
             <div className="flex ml-20">
               <div className="relative z-50">
