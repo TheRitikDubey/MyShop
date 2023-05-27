@@ -7,13 +7,18 @@ import { auth, provider } from "../auth/firebase";
 import { signInWithPopup } from "firebase/auth"
 import Home from "./Home";
 import { Link, Navigate, Route, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 function Login() {
   const [user,setUser] = useState('')
   const signInWithGoogle = () => {
-    useNavigate=Navigate();
+    console.log("working");
     signInWithPopup(auth,provider).then((data) => {
+      console.log(data);
       setUser(data.user.email);
       localStorage.setItem("email",data.user.email);
+    }).catch((error) => {
+      toast(error.message)
+      console.log(error.message);
     })
   }
   useEffect(() => {
