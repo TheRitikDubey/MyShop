@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import Character from "../assets/Character-working-laptop-sitting-chair.png";
 import Cactus from "../assets/cactus.svg";
 import google from "../assets/Google.svg";
 import facebook from "../assets/Facebook.svg";
 import { auth, provider } from "../auth/firebase";
 import { signInWithPopup } from "firebase/auth"
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./Home";
 function Login() {
+  const navigate = useNavigate();
   const [user,setUser] = useState('')
   
   const [email,setEmail] = useState('')
@@ -38,14 +40,30 @@ function Login() {
       setCnfPassword(e.target.value);
     }
   }
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if(password !== cnfPassword){
       toast("password and confirmation password did not match");
     }
     else{
-      console.log('====================================');
     console.log(email,password,cnfPassword);
-    console.log('====================================');
+      const payload ={
+        "email": email,
+        "password": password,
+        "confirm_password": cnfPassword
+      }
+      try {
+        const response  = await axios.post('http://localhost:9529/api/v1/createUser',payload);
+         
+         toast(response.data.message);
+         setTimeout(() => {
+          navigate("/")
+     }, 1000);  
+      } catch (error) {
+        toast("erorr______Occured");
+      }
+
+      
+
     }
     
   }

@@ -11,6 +11,13 @@ exports.createUser = async (req, res) => {
         message: "Please fill all fields",
       });
     }
+    else if (password !== confirm_password) {
+        console.log("not all fields...");
+        return res.status(400).json({
+          status: 401,
+          message: "Password did not matched",
+        });
+      }
     const user = await User.create({
       email,
       password,

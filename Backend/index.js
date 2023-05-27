@@ -10,7 +10,7 @@ app.use(cors());
 app.listen(PORT,() => {
     console.log(`App is working on port ${PORT}`);
 })
-app.use("api/v1", userRoutes);
+app.use("/api/v1", userRoutes);
 dbConnect();
 app.get('/', (req, res) => {
     res.send(`<h1>wokring on port ${PORT}</h1>`)
