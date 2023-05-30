@@ -7,9 +7,9 @@ import { auth, provider } from "../auth/firebase";
 import { signInWithPopup } from "firebase/auth"
 import Home from "./Home";
 import { Link, Navigate, Route, useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { toast } from 'react-toastify';
 function Login() {
-  const [user,setUser] = useState('')
+  const [user,setUser] = useState('');
   const signInWithGoogle = () => {
     console.log("working");
     signInWithPopup(auth,provider).then((data) => {

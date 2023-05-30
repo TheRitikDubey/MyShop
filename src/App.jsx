@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp"
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/signup" element={<SignUp/>} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 };
