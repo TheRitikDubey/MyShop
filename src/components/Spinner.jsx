@@ -10,3 +10,6 @@ const Spinner = () => {
 }
 
 export default Spinner
+// email: 'ritik.dubey@work',
+//   password: 'ritik',
+//   confirm_password: 'ritik'

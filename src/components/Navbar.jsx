@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -5,6 +7,16 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   const { cart } = useSelector((state) => state);
   const currentPath = window.location.pathname;
+ const handleLogOut = () => {
+  const user = localStorage.getItem("email");
+  localStorage.removeItem("email");
+  window.location.reload();
+  toast.success(`Logged out ${user}`);
+ } 
+//  useEffect(() => {
+//   localStorage.removeItem("email");
+// }, [handleLogOut])
+ 
   return (
     <>
       <div>
@@ -20,7 +32,9 @@ const Navbar = () => {
             <NavLink to="/">
               <h2>Home</h2>
             </NavLink>
-
+            <NavLink to="/orders">
+              <h2>My Orders</h2>
+            </NavLink>
             <NavLink to="/cart">
               <div className="relative">
                 <FaShoppingCart className="text-2xl" />
@@ -34,6 +48,9 @@ const Navbar = () => {
                 )}
               </div>
             </NavLink>
+            <button className="bg-white rounded-md text-black p-2" onClick={handleLogOut}>
+              Logout
+            </button>
           </div>  
 
           

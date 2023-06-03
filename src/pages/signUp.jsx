@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./Home";
 function Login() {
+  const BaseUrl = "http://localhost:9529";
   const navigate = useNavigate();
   const [user, setUser] = useState("");
 
@@ -50,7 +51,7 @@ function Login() {
       };
       try {
         const response = await axios.post(
-          "http://localhost:9529/api/v1/createUser",
+         BaseUrl +"/api/v1/createUser",
           payload
         );
         toast(response.data.message);
@@ -59,7 +60,7 @@ function Login() {
           navigate("/");
         }
       } catch (error) {
-        toast("erorr______Occured");
+        toast(error.message);
       }
     }
   };

@@ -8,8 +8,12 @@ import { signInWithPopup } from "firebase/auth"
 import Home from "./Home";
 import { Link, Navigate, Route, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import axios from "axios";
 function Login() {
+  const BaseUrl = "http://localhost:9529";
   const [user,setUser] = useState('');
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
   const signInWithGoogle = () => {
     console.log("working");
     signInWithPopup(auth,provider).then((data) => {
@@ -21,15 +25,30 @@ function Login() {
       console.log(error.message);
     })
   }
+  const HandleLogin = async() => {
+    try{
+      const payload = {
+        email: email,
+        password: password
+      }
+        const response = await axios.post(BaseUrl+"/api/v1/loginUser",payload);
+        toast.success(response.data.message);
+        console.log(response.data);
+        setUser(response.data.user.email);
+        localStorage.setItem("email",response.data.user.email);
+    }
+    catch(err){
+      toast(err.message);
+    }
+  }
   useEffect(() => {
-    console.log(user);
       setUser(localStorage.getItem("email"));
-  });
+  },[user]);
   
   return (
     <>
     {
-      user === '' || user === null?
+      user === '' || user === null ?
       <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 h-screen">
       <div className="p-8 flex justify-between w-[80%] h-[85%] rounded-3xl bg-slate-50">
         <div className="w-[100%]">
@@ -44,6 +63,7 @@ function Login() {
               type="email"
               name=""
               id=""
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <p>Password</p>
             <input
@@ -51,11 +71,13 @@ function Login() {
               name=""
               id=""
               className="bg-gray-300 rounded-md p-2 max-w-xs"
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <div className="mt-2">
               <button
                 type="submit"
                 className="bg-pink-400 p-2 rounded-lg"
+                onClick={HandleLogin}
               >
                 Login
               </button>

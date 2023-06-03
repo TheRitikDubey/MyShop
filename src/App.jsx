@@ -10,9 +10,12 @@ import { ToastContainer } from "react-toastify";
 const App = () => {
   return (
     <div>
-      <div className="bg-slate-900">
+      {
+        localStorage.getItem("email") !== null?(<div className="bg-slate-900">
         <Navbar />
-      </div>
+      </div>):''
+      }
+      
       <Routes>
         <Route path="/" element={<Login />} />
         {/* <Route path="/Home" element={<Home />} /> */}
