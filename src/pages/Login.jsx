@@ -50,8 +50,8 @@ function Login() {
     {
       user === '' || user === null ?
       <div className="flex justify-center items-center bg-gradient-to-r from-sky-500 to-indigo-500 h-screen">
-      <div className="p-8 flex justify-between w-[80%] h-[85%] rounded-3xl bg-slate-50">
-        <div className="w-[100%]">
+      <div className="flex justify-between w-[80%] h-[85%] rounded-3xl bg-slate-50">
+        <div className="p-8 w-[100%]">
           <div className="flex flex-col gap-4">
             <h2 className="text-pink-400 text-md font-semibold">
               Welcome back !!!
@@ -98,14 +98,14 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="bg-sky-300 w-[35%] rounded-3xl hidden md:block lg:block">
+        <div className="bg-sky-300 w-[45%] rounded-3xl hidden md:block lg:block">
           <div className="mt-16">
-            <div className="flex ml-20">
-              <div className="relative z-50">
-                <img src={Character} className="z-100" alt="" />
+            <div className="flex gap-1">
+              <div className="relative top-24 z-50 -ml-16">
+                <img src={Character}  className="z-100 max-w-[130%]" alt="" />
               </div>
-              <div className="relative -ml-32 top-24 z-10">
-                <img src={Cactus} className="z-10" alt="" />
+              <div className="relative top-44 z-10">
+                <img src={Cactus} className="z-10 -ml-[30px] max-w-[130%]" alt="" />
               </div>
             </div>
           </div>
