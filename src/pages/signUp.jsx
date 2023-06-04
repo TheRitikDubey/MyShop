@@ -68,7 +68,6 @@ function Login() {
   return (
     <>
       <div className="">
-        <h1>This is signup page</h1>
         <div className="p-16 w-[100%] flex justify-center align-middle">
           <div className="flex flex-col gap-4">
             <h2 className="text-pink-400 text-md font-semibold">
