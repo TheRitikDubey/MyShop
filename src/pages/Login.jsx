@@ -9,7 +9,7 @@ import Home from "./Home";
 import { Link, Navigate, Route, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from "axios";
-function Login() {
+function Login({setEmailId}) {
   const BaseUrl = "http://localhost:9529";
   const [user,setUser] = useState('');
   const [email,setEmail] = useState('');
@@ -20,6 +20,7 @@ function Login() {
       console.log(data);
       setUser(data.user.email);
       localStorage.setItem("email",data.user.email);
+      setEmailId(true);
     }).catch((error) => {
       toast(error.message)
       console.log(error.message);
@@ -36,6 +37,7 @@ function Login() {
         console.log(response.data);
         setUser(response.data.user.email);
         localStorage.setItem("email",response.data.user.email);
+        setEmailId(true);
     }
     catch(err){
       toast(err.message);
@@ -93,7 +95,7 @@ function Login() {
                 <img onClick={signInWithGoogle} src={google} className="hover:cursor-pointer hover:w-9" alt="" width={30} height={30} />
               </div>
               <div>
-                <img src={facebook} alt="" width={30} height={30} className="hover:cursor-pointer hover:w-9" />
+              <img src={facebook} alt="" width={30} height={30} className="hover:cursor-pointer hover:w-9" />
               </div>
             </div>
           </div>

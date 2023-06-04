@@ -6,18 +6,20 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/signUp"
 import { ToastContainer } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [email,setEmailId] = useState(false);
   return (
     <div>
       {
-        localStorage.getItem("email") !== null?(<div className="bg-slate-900">
+        email === true?(<div className="bg-slate-900">
         <Navbar />
       </div>):''
       }
       
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login setEmailId={setEmailId} />} />
         {/* <Route path="/Home" element={<Home />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/signup" element={<SignUp/>} />
