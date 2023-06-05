@@ -9,6 +9,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenCategories, setIsOpenCategories] = useState(false);
   let brands = [];
   let categories = [];
   async function fetchProductData() {
@@ -58,12 +59,12 @@ const Home = () => {
             <div>
               <div
                 className="flex items-baseline hover:cursor-pointer  gap-1"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpenCategories(!isOpenCategories)}
               >
                 <button>Categories</button>
                 <FiChevronDown />
               </div>
-              {isOpen && (
+              {isOpenCategories && (
                 <div className="gap-2 flex flex-col mt-2">
                   <DropDownItems posts={posts} param={"categories"} />
                 </div>
