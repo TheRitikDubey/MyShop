@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       {
-        email === true?(<div className="bg-slate-900">
+        (email === true || localStorage.getItem("email") !==null) ?(<div className="bg-slate-900">
         <Navbar />
       </div>):''
       }

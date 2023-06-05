@@ -84,7 +84,7 @@ function Login({setEmailId}) {
                 Login
               </button>
             </div>
-            <div className="w-[40%">
+            <div className="w-[40%]">
             <Link className="border rounded-md bg-pink-500 p-2 text-xs" to="/signup">Create you account</Link>
             </div>
             

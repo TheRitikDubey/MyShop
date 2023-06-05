@@ -18,7 +18,7 @@ const CartItem = ({item, itemIndex}) => {
       <div className="border-gray-300 p-4 rounded-md gap-6 flex flex-baseline border-2">
 
         <div>
-          <img src={item.image} width="100" height="100" />
+          <img src={item.thumbnail} width="100" height="100" className="rounded-lg" />
         </div>
         <div className="mt-4 flex flex-col gap-4">
           <h1>{item.title}</h1>

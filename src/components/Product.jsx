@@ -1,6 +1,8 @@
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import {add ,remove} from "../redux/Slices/CartSlice";
+import { AiTwotoneStar } from 'react-icons/ai';
+
 
 const Product = ({post}) => {
 
@@ -16,6 +18,9 @@ const Product = ({post}) => {
     dispatch(remove(post.id));
     toast.error("Item removed from Cart");
   }
+  function roundDecimal(postValue) {
+    return Number.parseFloat(postValue).toFixed(1);
+  }
 
   return (
     <div className="flex flex-col items-center justify-between 
@@ -27,14 +32,24 @@ const Product = ({post}) => {
         <p className="w-40 text-gray-400 font-normal text-[10px] text-left">{post.description.split(" ").slice(0,10).join(" ") + "..."}</p>
       </div>
       <div className="h-[180px]">
-        <img src={post.image} className="h-full w-full " />
+        <img src={post.thumbnail} className="h-full w-full rounded-lg " />
+        {
+          post.stock <50 ?<p className="text-md text-red-600">hurry! only a few items left</p> : ''
+        }
       </div>
 
       <div className="flex justify-between gap-12 items-center w-full mt-5">
         <div>
           <p className="text-green-600 font-semibold">${post.price}</p>
+          <p className="text-blue-800 text-sm">{post.discountPercentage}% off</p>
         </div>
-        
+        <div className="flex bg-yellow-400 gap-1 p-2 rounded-md">
+          <div className="">
+          <AiTwotoneStar/>
+          </div>
+          
+          <p className="text-sm">{roundDecimal(post.rating)}</p>
+        </div>
         {
           cart.some((p) => p.id == post.id) ?
           (<button
