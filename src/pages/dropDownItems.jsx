@@ -20,7 +20,7 @@ function dropDownItems({ posts, param, selectedBrands, onBrandFilter }) {
   return (
     <div>
       {brands.map((val, index) => {
-        console.log("val", val);
+        // console.log("val", val);
         return (
           <div className="flex gap-1 items-baseline">
             <input
