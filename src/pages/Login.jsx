@@ -43,6 +43,12 @@ function Login({setEmailId}) {
       toast(err.message);
     }
   }
+  const LoginasGuest = () =>{
+    const email = "admin@example.com";
+    localStorage.setItem("email",email);
+    setEmailId(true);
+    window.location.reload();
+  }
   useEffect(() => {
       setUser(localStorage.getItem("email"));
   },[user]);
@@ -94,8 +100,10 @@ function Login({setEmailId}) {
               <div>
                 <img onClick={signInWithGoogle} src={google} className="hover:cursor-pointer hover:w-9" alt="" width={30} height={30} />
               </div>
-              <div>
-              <img src={facebook} alt="" width={30} height={30} className="hover:cursor-pointer hover:w-9" />
+              <div className="flex gap-4 items-baseline">
+                <p>Or</p>
+                <button type="submit" className="bg-blue-400 p-1" onClick={LoginasGuest}>Continue as Guest</button>
+              {/* <img src={facebook} alt="" width={30} height={30} className="hover:cursor-pointer hover:w-9" /> */}
               </div>
             </div>
           </div>

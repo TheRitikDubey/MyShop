@@ -10,11 +10,11 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenCategories, setIsOpenCategories] = useState(false);
+  const [selectedBrands,setSelectedBrands] = useState([]);
   let brands = [];
   let categories = [];
   async function fetchProductData() {
     setLoading(true);
-
     try {
       const res = await fetch(API_URL);
       const data = await res.json();
@@ -27,6 +27,16 @@ const Home = () => {
     }
     setLoading(false);
   }
+  const handleBrandFilter = (brand) => {
+    if (selectedBrands.includes(brand)) {
+      // Brand is already selected, remove it from the filter
+      setSelectedBrands(selectedBrands.filter(b => b !== brand));
+    } else {
+      // Brand is not selected, add it to the filter
+      setSelectedBrands([...selectedBrands, brand]);
+    }
+    // posts.filter(p => p.brand === brand).forEach
+  };
 
   useEffect(() => {
     fetchProductData();
@@ -51,7 +61,7 @@ const Home = () => {
               </div>
               {isOpen && (
                 <div className="gap-2 flex flex-col mt-2">
-                  <DropDownItems posts={posts} param={"brand"} />
+                  <DropDownItems posts={posts} param={"brand"} selectedBrands={selectedBrands} onBrandFilter={handleBrandFilter} />
                 </div>
               )}
             </div>
